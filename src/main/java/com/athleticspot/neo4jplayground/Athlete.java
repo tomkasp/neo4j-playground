@@ -36,20 +36,19 @@ public class Athlete {
      * to ignore the direction of the relationship.
      * https://dzone.com/articles/modelling-data-neo4j
      */
-    @Relationship(type = "TEAMMATE", direction = Relationship.UNDIRECTED)
-    public Set<Athlete> teammates;
+    @Relationship(type = "FRIENDS", direction = Relationship.UNDIRECTED)
+    public Set<Athlete> friends;
 
     public void worksWith(Athlete person) {
-        if (teammates == null) {
-            teammates = new HashSet<>();
+        if (friends == null) {
+            friends = new HashSet<>();
         }
-        teammates.add(person);
+        friends.add(person);
     }
 
     public String toString() {
-
-        return this.name + "'s teammates => "
-                + Optional.ofNullable(this.teammates).orElse(
+        return this.name + "'s friends => "
+                + Optional.ofNullable(this.friends).orElse(
                 Collections.emptySet()).stream()
                 .map(Athlete::getName)
                 .collect(Collectors.toList());
@@ -57,10 +56,6 @@ public class Athlete {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

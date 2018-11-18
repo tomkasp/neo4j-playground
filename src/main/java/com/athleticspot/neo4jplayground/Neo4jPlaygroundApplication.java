@@ -15,14 +15,24 @@ public class Neo4jPlaygroundApplication {
     @Autowired
     ActorRepository actorRepository;
 
+    @Autowired
+    AthleteRepository athleteRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(Neo4jPlaygroundApplication.class, args);
     }
 
     @PostConstruct
-    public void init(){
-        final Iterable<Actor> all = actorRepository.findAll();
+    public void init() {
 
-        System.out.println("size: ");
+        Athlete athlete = new Athlete("Kasprzycki");
+        Athlete dybala = new Athlete("Dybala");
+
+        athleteRepository.save(dybala);
+        athleteRepository.save(athlete);
+
+        dybala.worksWith(athlete);
+
+        athleteRepository.save(dybala);
     }
 }
