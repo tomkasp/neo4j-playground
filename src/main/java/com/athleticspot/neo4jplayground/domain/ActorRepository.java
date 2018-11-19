@@ -1,4 +1,4 @@
-package com.athleticspot.neo4jplayground;
+package com.athleticspot.neo4jplayground.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

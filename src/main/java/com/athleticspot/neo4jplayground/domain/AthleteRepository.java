@@ -1,5 +1,6 @@
-package com.athleticspot.neo4jplayground;
+package com.athleticspot.neo4jplayground.domain;
 
+import com.athleticspot.neo4jplayground.domain.Athlete;
 import org.springframework.data.repository.CrudRepository;
 
 /**

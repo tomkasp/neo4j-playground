@@ -1,5 +1,8 @@
 package com.athleticspot.neo4jplayground;
 
+import com.athleticspot.neo4jplayground.domain.ActorRepository;
+import com.athleticspot.neo4jplayground.domain.Athlete;
+import com.athleticspot.neo4jplayground.domain.AthleteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,7 +34,7 @@ public class Neo4jPlaygroundApplication {
         athleteRepository.save(dybala);
         athleteRepository.save(athlete);
 
-        dybala.worksWith(athlete);
+        dybala.fallow(athlete);
 
         athleteRepository.save(dybala);
     }

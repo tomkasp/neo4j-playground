@@ -1,4 +1,4 @@
-package com.athleticspot.neo4jplayground;
+package com.athleticspot.neo4jplayground.domain;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -25,7 +25,9 @@ public class Athlete {
 
     private Athlete() {
         // Empty constructor required as of Neo4j API 2.0.5
-    };
+    }
+
+    ;
 
     public Athlete(String name) {
         this.name = name;
@@ -36,14 +38,40 @@ public class Athlete {
      * to ignore the direction of the relationship.
      * https://dzone.com/articles/modelling-data-neo4j
      */
-    @Relationship(type = "FRIENDS", direction = Relationship.UNDIRECTED)
+    @Relationship(type = "FALLOW", direction = Relationship.UNDIRECTED)
     public Set<Athlete> friends;
 
-    public void worksWith(Athlete person) {
+    public void fallow(Athlete person) {
         if (friends == null) {
             friends = new HashSet<>();
         }
         friends.add(person);
+    }
+
+    public void unfallow(Athlete unfallowAthlete) {
+        this.friends.removeIf(athlete ->
+                athlete.id.equals(unfallowAthlete.id)
+        );
+    }
+
+    public void fetchAllFriends() {
+
+    }
+
+    public void fetchAllFriendsPaged() {
+
+    }
+
+    public void fetchMyActivities() {
+
+    }
+
+    public void fetchAllActivities() {
+
+    }
+
+    public void fetchAllActivitiesPaged() {
+
     }
 
     public String toString() {
