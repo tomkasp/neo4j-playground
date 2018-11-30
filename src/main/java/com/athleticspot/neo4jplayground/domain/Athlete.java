@@ -86,4 +86,7 @@ public class Athlete {
         return name;
     }
 
+    public Long getId() {
+        return id;
+    }
 }
