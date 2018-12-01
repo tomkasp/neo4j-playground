@@ -28,14 +28,14 @@ public class Neo4jPlaygroundApplication {
     @PostConstruct
     public void init() {
 
-        Athlete athlete = new Athlete("Kasprzycki");
-        Athlete dybala = new Athlete("Dybala");
-
-        athleteRepository.save(dybala);
-        athleteRepository.save(athlete);
-
-        dybala.fallow(athlete);
-
-        athleteRepository.save(dybala);
+//        Athlete athlete = new Athlete("Kasprzycki");
+//        Athlete dybala = new Athlete("Dybala");
+//
+//        athleteRepository.save(dybala);
+//        athleteRepository.save(athlete);
+//
+//        dybala.fallow(athlete);
+//
+//        athleteRepository.save(dybala);
     }
 }

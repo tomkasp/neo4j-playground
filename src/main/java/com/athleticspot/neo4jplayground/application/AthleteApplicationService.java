@@ -2,10 +2,11 @@ package com.athleticspot.neo4jplayground.application;
 
 import com.athleticspot.neo4jplayground.domain.Athlete;
 import com.athleticspot.neo4jplayground.domain.AthleteRepository;
+import com.athleticspot.neo4jplayground.domain.SportActivity;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.Date;
 
 /**
  * @author Tomasz Kasprzycki
@@ -35,5 +36,14 @@ public class AthleteApplicationService {
 
     public void createAthlete(Athlete athlete) {
         athleteRepository.save(athlete);
+    }
+
+    public void perform(Long userId, Date date, String type) {
+        athleteRepository.findById(userId).ifPresent(
+                athlete -> {
+                    athlete.perform(SportActivity.create(date, type));
+                    athleteRepository.save(athlete);
+                }
+        );
     }
 }

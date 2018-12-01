@@ -1,16 +1,12 @@
 package com.athleticspot.neo4jplayground.infrastracture.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author Tomasz Kasprzycki
  */
-@JsonDeserialize
 @JsonAutoDetect(
-        fieldVisibility = JsonAutoDetect.Visibility.ANY,
-        getterVisibility = JsonAutoDetect.Visibility.NONE,
-        setterVisibility = JsonAutoDetect.Visibility.NONE)
+        fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class FallowDto {
 
     private String athleteId;
@@ -22,5 +18,13 @@ public class FallowDto {
 
     public String getAthleteIdToFallow() {
         return athleteIdToFallow;
+    }
+
+    @Override
+    public String toString() {
+        return "FallowDto{" +
+                "athleteId='" + athleteId + '\'' +
+                ", athleteIdToFallow='" + athleteIdToFallow + '\'' +
+                '}';
     }
 }

@@ -27,8 +27,6 @@ public class Athlete {
         // Empty constructor required as of Neo4j API 2.0.5
     }
 
-    ;
-
     public Athlete(String name) {
         this.name = name;
     }
@@ -41,11 +39,22 @@ public class Athlete {
     @Relationship(type = "FALLOW", direction = Relationship.UNDIRECTED)
     public Set<Athlete> friends;
 
+    @Relationship(type = "PERFORM", direction = Relationship.UNDIRECTED)
+    public Set<SportActivity> sportActivities;
+
+
     public void fallow(Athlete person) {
         if (friends == null) {
             friends = new HashSet<>();
         }
         friends.add(person);
+    }
+
+    public void perform(SportActivity sportActivity){
+        if(sportActivities == null){
+            sportActivities = new HashSet<>();
+        }
+        sportActivities.add(sportActivity);
     }
 
     public void unfallow(Athlete unfallowAthlete) {
