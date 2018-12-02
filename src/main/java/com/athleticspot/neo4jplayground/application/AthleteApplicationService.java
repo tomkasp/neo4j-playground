@@ -46,4 +46,8 @@ public class AthleteApplicationService {
                 }
         );
     }
+
+    public void getPagedActivities(Long userId) {
+
+    }
 }

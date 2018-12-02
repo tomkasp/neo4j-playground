@@ -37,6 +37,15 @@ public class AthleteController {
         );
     }
 
+    /**
+     * Gets paged activities of user and all people which certain user fallows.
+     *
+     */
+    @GetMapping(value = "/activities")
+    public void getSportActivitiesPaged(@RequestParam Long userId){
+        athleteApplicationService.getPagedActivities(userId);
+    }
+
     @DeleteMapping(value = "/fallow")
     public void unfallow() {
 
