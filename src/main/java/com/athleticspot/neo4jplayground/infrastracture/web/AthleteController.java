@@ -58,3 +58,5 @@ public class AthleteController {
     }
 
 }
+
+//    Match (a:Athlete{name:"Tomasz Kasprzycki"})-[r:FALLOW]->(n:Athlete)-[g:PERFORM]->(h:SportActivity) return h as sa union match (t:Athlete{name:"Tomasz Kasprzycki"})-[:PERFORM]->(z:SportActivity) return z as sa
