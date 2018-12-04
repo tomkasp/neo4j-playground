@@ -48,6 +48,7 @@ public class AthleteApplicationService {
     }
 
     public void getPagedActivities(Long userId) {
-
+        final Iterable<SportActivity> activitiesByUserId = athleteRepository.findActivitiesByUserId();
+        System.out.println(activitiesByUserId);
     }
 }
