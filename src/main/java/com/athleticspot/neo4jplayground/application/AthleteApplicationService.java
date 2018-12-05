@@ -3,6 +3,9 @@ package com.athleticspot.neo4jplayground.application;
 import com.athleticspot.neo4jplayground.domain.Athlete;
 import com.athleticspot.neo4jplayground.domain.AthleteRepository;
 import com.athleticspot.neo4jplayground.domain.SportActivity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,6 +52,7 @@ public class AthleteApplicationService {
 
     public void getPagedActivities(Long userId) {
         final Iterable<SportActivity> activitiesByUserId = athleteRepository.findActivitiesByUserId();
+        final Page<SportActivity> activitiesByUserId1 = athleteRepository.findActivitiesByUserId(PageRequest.of(0, 2));
         System.out.println(activitiesByUserId);
     }
 }
