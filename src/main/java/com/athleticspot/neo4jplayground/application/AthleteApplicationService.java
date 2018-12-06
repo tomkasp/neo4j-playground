@@ -34,7 +34,6 @@ public class AthleteApplicationService {
                     athleteRepository.save(athlete);
                 }
         );
-
     }
 
     public void createAthlete(Athlete athlete) {
@@ -51,7 +50,7 @@ public class AthleteApplicationService {
     }
 
     public void getPagedActivities(Long userId) {
-        final Iterable<SportActivity> activitiesByUserId = athleteRepository.findActivitiesByUserId();
+        final Iterable<SportActivity> activitiesByUserId = athleteRepository.findActivitiesByUserId(userId);
         final Page<SportActivity> activitiesByUserId1 = athleteRepository.findActivitiesByUserId(PageRequest.of(0, 2));
         System.out.println(activitiesByUserId);
     }

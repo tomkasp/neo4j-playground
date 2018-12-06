@@ -15,7 +15,7 @@ public interface AthleteRepository  extends CrudRepository<Athlete, Long> {
             "match (t:Athlete{name:\"Tomasz Kasprzycki\"})-[:PERFORM]->(z:SportActivity) with rows + collect(z) as allRows " +
             "UNWIND allRows as row " +
             "return row")
-    Iterable<SportActivity> findActivitiesByUserId();
+    Iterable<SportActivity> findActivitiesByUserId(Long userId);
 
 
     @Query(value = "Match (a:Athlete{name:\"Tomasz Kasprzycki\"})-[r:FALLOW]->(n:Athlete)-[g:PERFORM]->(h:SportActivity) with collect(h) as rows " +
@@ -28,14 +28,3 @@ public interface AthleteRepository  extends CrudRepository<Athlete, Long> {
             "return count(row)")
     Page<SportActivity> findActivitiesByUserId(PageRequest of);
 }
-
-
-
-//Match (a:Athlete{name:"Tomasz Kasprzycki"})-[r:FALLOW]->(n:Athlete)-[g:PERFORM]->(h:SportActivity) with collect(h) as rows
-//match (t:Athlete{name:"Tomasz Kasprzycki"})-[:PERFORM]->(z:SportActivity) with rows + collect(z) as allRows
-//UNWIND allRows as row
-//return row
-//
-//
-//        union
-//        match (t:Athlete{name:"Tomasz Kasprzycki"})-[:PERFORM]->(z:SportActivity) return z as sa
