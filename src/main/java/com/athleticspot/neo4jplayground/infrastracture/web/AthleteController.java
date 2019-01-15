@@ -2,10 +2,13 @@ package com.athleticspot.neo4jplayground.infrastracture.web;
 
 import com.athleticspot.neo4jplayground.application.AthleteApplicationService;
 import com.athleticspot.neo4jplayground.domain.Athlete;
+import com.athleticspot.neo4jplayground.domain.AthleteRepository;
 import com.athleticspot.neo4jplayground.infrastracture.web.dto.AthleteInDto;
 import com.athleticspot.neo4jplayground.infrastracture.web.dto.FallowDto;
 import com.athleticspot.neo4jplayground.infrastracture.web.dto.SportActivityDto;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Tomasz Kasprzycki
@@ -16,8 +19,18 @@ public class AthleteController {
 
     private final AthleteApplicationService athleteApplicationService;
 
-    public AthleteController(AthleteApplicationService athleteApplicationService) {
+    private final AthleteRepository athleteRepository;
+
+    public AthleteController(AthleteApplicationService athleteApplicationService,
+                             AthleteRepository athleteRepository) {
         this.athleteApplicationService = athleteApplicationService;
+        this.athleteRepository = athleteRepository;
+    }
+
+    @GetMapping
+    public List<Athlete> getAthlete(@RequestParam String name) {
+        final List<Athlete> byNameIgnoreCase = athleteRepository.findByNameContainingIgnoreCase(name);
+        return byNameIgnoreCase;
     }
 
     @PutMapping(value = "/fallow")
@@ -39,10 +52,9 @@ public class AthleteController {
 
     /**
      * Gets paged activities of user and all people which certain user fallows.
-     *
      */
     @GetMapping(value = "/activities")
-    public void getSportActivitiesPaged(@RequestParam Long userId){
+    public void getSportActivitiesPaged(@RequestParam Long userId) {
         athleteApplicationService.getPagedActivities(userId);
     }
 

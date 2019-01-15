@@ -1,8 +1,7 @@
 package com.athleticspot.neo4jplayground;
 
 import com.athleticspot.neo4jplayground.domain.ActorRepository;
-import com.athleticspot.neo4jplayground.domain.Athlete;
-import com.athleticspot.neo4jplayground.domain.AthleteRepository;
+import com.athleticspot.neo4jplayground.domain.SportActivityReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +18,7 @@ public class Neo4jPlaygroundApplication {
     ActorRepository actorRepository;
 
     @Autowired
-    AthleteRepository athleteRepository;
+    SportActivityReadRepository sportActivityReadRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Neo4jPlaygroundApplication.class, args);
@@ -31,11 +30,11 @@ public class Neo4jPlaygroundApplication {
 //        Athlete athlete = new Athlete("Kasprzycki");
 //        Athlete dybala = new Athlete("Dybala");
 //
-//        athleteRepository.save(dybala);
-//        athleteRepository.save(athlete);
+//        sportActivityReadRepository.save(dybala);
+//        sportActivityReadRepository.save(athlete);
 //
 //        dybala.fallow(athlete);
 //
-//        athleteRepository.save(dybala);
+//        sportActivityReadRepository.save(dybala);
     }
 }
